@@ -4,7 +4,7 @@ In the world of event-driven architectures, stream processing has become a criti
 
 ## Flow Diagram
 
-![Chatty Events Framework Architecture](https://pgpmg.github.io/blogs/chatty/ChattyEvents.png)
+![Chatty Events Framework Architecture](https://pradeep-ganachari.github.io/blogs/chatty/ChattyEvents.png)
 
 ## The Role of Kafka Event Processing Service
 

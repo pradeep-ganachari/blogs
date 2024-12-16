@@ -65,10 +65,10 @@ To implement intelligent rate limiting, we will use an **Envoy Proxy** with a **
 This dynamic process ensures that applications are rate-limited in real time based on actual traffic conditions, rather than static thresholds or fixed rules.
 
 ## Block Diagram
-![TCP ratelimit Architecture](https://pgpmg.github.io/blogs/tcp_ratelimit/TcpRateLimitArch.png)
+![TCP ratelimit Architecture](https://pradeep-ganachari.github.io/blogs/tcp_ratelimit/TcpRateLimitArch.png)
 
 ## Sequence Diagram
-![TCP ratelimit Sequence Diagram](https://pgpmg.github.io/blogs/tcp_ratelimit/TcpRateLimitSeq.png)
+![TCP ratelimit Sequence Diagram](https://pradeep-ganachari.github.io/blogs/tcp_ratelimit/TcpRateLimitSeq.png)
 
 ## Benefits of Using a Wasm Plugin with Envoy Proxy for Rate Limiting
 
@@ -99,7 +99,3 @@ In an era where application traffic can be unpredictable, intelligent rate limit
 This solution enables scalability, flexibility, and reliability, making it ideal for modern cloud-native applications that require real-time traffic management without compromising on performance.
 
 With this approach, you can safeguard your database from rogue traffic, ensure seamless application performance, and build a resilient infrastructure capable of handling even the most unpredictable traffic conditions.
-
----
-
-Feel free to share any comments or ask questions below. If you’re interested in deploying a similar solution or need further details, let us know how we can help!

@@ -1,15 +1,117 @@
 <!DOCTYPE html>
-  <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Blogs</title>
-    </head>
-    <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blogs</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #2e3a47;
+            padding-top: 50px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #4f6d7a;
+            margin-top: 30px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #ff6f61;
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+            background-color: #ff6f61;
+            transform: scale(1.1);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .blog-section {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 40px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .blog-section:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Placeholder photo styles */
+        .photo-container {
+            margin: 20px 0;
+        }
+
+        .photo-container img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 5px solid #ff6f61;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            a {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
         <h1>Welcome to Tech. Blogs!</h1>
-        <h2>Efficient Event Processing with Kafka: Handling Chatty and Duplicate Events</h2>
-        <a href="https://pgpmg.github.io/blogs/chatty/ChattyEvents.html" target="_blank">Read the Blog</a>
-        <h2>Intelligent Rate Limiter for TCP Traffic with Sidecar Proxy: A Solution for Database Stability</h2>
-        <a href="https://pgpmg.github.io/blogs/tcp_ratelimit/TcpRateLimit.html" target="_blank">Read the Blog</a>        
-    </body>
-   </html>
+
+        <!-- Placeholder photo section -->
+        <div class="photo-container">
+            <img src="https://pradeep-ganachari.github.io/blogs/my_image.jpeg" alt="My Photo">
+        </div>
+
+        <div class="blog-section">
+            <h2>Efficient Event Processing with Kafka: Handling Chatty and Duplicate Events</h2>
+            <a href="https://pradeep-ganachari.github.io/blogs/chatty/ChattyEvents.html" target="_blank">Read the Blog</a>
+        </div>
+
+        <div class="blog-section">
+            <h2>Intelligent Rate Limiter for TCP Traffic with Sidecar Proxy: A Solution for Database Stability</h2>
+            <a href="https://pradeep-ganachari.github.io/blogs/tcp_ratelimit/TcpRateLimit.html" target="_blank">Read the Blog</a>        
+        </div>
+    </div>
+</body>
+</html>
