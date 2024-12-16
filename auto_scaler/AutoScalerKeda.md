@@ -63,7 +63,7 @@ Built-in scalers run in the KEDA process/pod, while external scalers require an 
    This service has mainly 3 modules
    - ***Collector***: Collector module is responsible for collecting the required metrics from metrics server (eg: prometheus) periodically
    - ***Recommender***: Recommender module is where the algorithm to calculate the number of pods runs and it uses the metrics collected by collector module to run the algorithm
-   - ***Executor***: Executor module is the one which decides whether or when to apply the recommended number of pods using KEDA/HPA. 
+   - ***Executor***: Executor module is the one which decides whether or when to apply the recommended number of pods using KEDA/HPA by returning pod count to periodic calls from KEDA. 
 2. **KEDA**
    KEDA will attempt a GRPC connection to Resource Management Service immediately after reconciling the ScaledObject.
    It will then make the following RPC calls:
@@ -71,13 +71,25 @@ Built-in scalers run in the KEDA process/pod, while external scalers require an 
    - ***StreamIsActive***: KEDA does an initial call and the scaler is expected to maintain a long-lived connection (called a stream in GRPC terminology). The external push scaler can then send an IsActive event back to KEDA at any time. KEDA will only attempt another call to StreamIsActive if it needs to re-connect
    - ***GetMetricsSpec***: KEDA will do an initial call with the following data in the incoming ScaledObjectRef parameter:
    - ***GetMetrics***: KEDA will call this method every pollingInterval to get the point-in-time metric values for the names returned by GetMetricsSpec.
+
+   Every periodic call to Resource Management Service, it gets a pod count for the target K8s Kafka application.
 3. **Application Pods**
    Application pods are the Kafka applications that need to scaled up/down based on the current load in the system.
 4. **Metric Server**
    Metrics server can be any thing as in Prometheus, KPOW, or Kafka broker itself which gives the required Kafka metrics for a give application.
 
 ### Algorithm
-TBD
+
+Algorithm to calculate the required number of replicas for K8s Kafka application depends on below 2 metrics
+- **throughput of a single pod**: Number of messages per second from Kafka topics a single pod can consume and process. Its a config parameter given by each application via KEDA scaledObject to Resource Management Service (External Scaler)
+- **Kafka topics**: Application has to provide a list of Kafka topics it is reading from via KEDA scaledObject to Resource Management Service (External Scaler)
+- **Incoming message rate**: Number of messages per second being written to Kafka topics from which application is consuming messages. This incoming rate is read from metric server (example: Prometheus)
+
+***Desired Pod Count = IncomingMessageRate/Throughput***
+
+### Example Scaled Object
+![Example Scaled Object](https://pradeep-ganachari.github.io/blogs/auto_scaler/ScaledObjectExample.png)
 
 ### Advantages
-TBD
+1. All the downsides of autoscaling based on Kafka consumer lag are addressed
+2. Will have the explanability as and when the no. of replicas change since Resource Management Service returns the direct pod count to KEDA
